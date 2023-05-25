@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)https://www.bigocheatsheet.com/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Big-O Algorithm Complexity Cheat Sheet (Know Thy Complexities!) @ericdrowell</title>
+    
+    <link href="./Big-O Algorithm Complexity Cheat Sheet (Know Thy Complexities!) @ericdrowell_files/normalize.min.css" rel="stylesheet">
+    <link href="./Big-O Algorithm Complexity Cheat Sheet (Know Thy Complexities!) @ericdrowell_files/main.css" rel="stylesheet">
+  <iframe id="pxcelframe" title="pxcelframe" src="./Big-O Algorithm Complexity Cheat Sheet (Know Thy Complexities!) @ericdrowell_files/t_.html" style="display: none;"></iframe><script async="" src="./Big-O Algorithm Complexity Cheat Sheet (Know Thy Complexities!) @ericdrowell_files/get_counts"></script><script src="./Big-O Algorithm Complexity Cheat Sheet (Know Thy Complexities!) @ericdrowell_files/f.txt"></script><script type="text/javascript" async="" src="./Big-O Algorithm Complexity Cheat Sheet (Know Thy Complexities!) @ericdrowell_files/ga.js.download"></script><script async="" src="./Big-O Algorithm Complexity Cheat Sheet (Know Thy Complexities!) @ericdrowell_files/5a572c8960405000131c1b9a.js.download"></script><script src="./Big-O Algorithm Complexity Cheat Sheet (Know Thy Complexities!) @ericdrowell_files/f(1).txt" id="google_shimpl"></script><script type="text/javascript" async="" src="./Big-O Algorithm Complexity Cheat Sheet (Know Thy Complexities!) @ericdrowell_files/embed.js.download"></script><meta http-equiv="origin-trial" content="A7CQXglZzTrThjGTBEn1rWTxHOEtkWivwzgea+NjyardrwlieSjVuyG44PkYgIPGs8Q9svD8sF3Yedn0BBBjXAkAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A3vKT9yxRPjmXN3DpIiz58f5JykcWHjUo/W7hvmtjgh9jPpQgem9VbADiNovG8NkO6mRmk70Kex8/KUqAYWVWAEAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A4A26Ymj79UVY7C7JGUS4BG1s7MdcDokAQf/RP0paks+RoTYbXHxceT/5L4iKcsleFCngi75YfNRGW2+SpVv1ggAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="As0hBNJ8h++fNYlkq8cTye2qDLyom8NddByiVytXGGD0YVE+2CEuTCpqXMDxdhOMILKoaiaYifwEvCRlJ/9GcQ8AAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="AgRYsXo24ypxC89CJanC+JgEmraCCBebKl8ZmG7Tj5oJNx0cmH0NtNRZs3NB5ubhpbX/bIt7l2zJOSyO64NGmwMAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="A7CQXglZzTrThjGTBEn1rWTxHOEtkWivwzgea+NjyardrwlieSjVuyG44PkYgIPGs8Q9svD8sF3Yedn0BBBjXAkAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A3vKT9yxRPjmXN3DpIiz58f5JykcWHjUo/W7hvmtjgh9jPpQgem9VbADiNovG8NkO6mRmk70Kex8/KUqAYWVWAEAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A4A26Ymj79UVY7C7JGUS4BG1s7MdcDokAQf/RP0paks+RoTYbXHxceT/5L4iKcsleFCngi75YfNRGW2+SpVv1ggAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="As0hBNJ8h++fNYlkq8cTye2qDLyom8NddByiVytXGGD0YVE+2CEuTCpqXMDxdhOMILKoaiaYifwEvCRlJ/9GcQ8AAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="AgRYsXo24ypxC89CJanC+JgEmraCCBebKl8ZmG7Tj5oJNx0cmH0NtNRZs3NB5ubhpbX/bIt7l2zJOSyO64NGmwMAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="A7CQXglZzTrThjGTBEn1rWTxHOEtkWivwzgea+NjyardrwlieSjVuyG44PkYgIPGs8Q9svD8sF3Yedn0BBBjXAkAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A3vKT9yxRPjmXN3DpIiz58f5JykcWHjUo/W7hvmtjgh9jPpQgem9VbADiNovG8NkO6mRmk70Kex8/KUqAYWVWAEAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A4A26Ymj79UVY7C7JGUS4BG1s7MdcDokAQf/RP0paks+RoTYbXHxceT/5L4iKcsleFCngi75YfNRGW2+SpVv1ggAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="As0hBNJ8h++fNYlkq8cTye2qDLyom8NddByiVytXGGD0YVE+2CEuTCpqXMDxdhOMILKoaiaYifwEvCRlJ/9GcQ8AAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="AgRYsXo24ypxC89CJanC+JgEmraCCBebKl8ZmG7Tj5oJNx0cmH0NtNRZs3NB5ubhpbX/bIt7l2zJOSyO64NGmwMAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><link rel="preload" href="./Big-O Algorithm Complexity Cheat Sheet (Know Thy Complexities!) @ericdrowell_files/f(2).txt" as="script"><script type="text/javascript" src="./Big-O Algorithm Complexity Cheat Sheet (Know Thy Complexities!) @ericdrowell_files/f(2).txt"></script><link rel="preload" href="./Big-O Algorithm Complexity Cheat Sheet (Know Thy Complexities!) @ericdrowell_files/f(3).txt" as="script"><script type="text/javascript" src="./Big-O Algorithm Complexity Cheat Sheet (Know Thy Complexities!) @ericdrowell_files/f(3).txt"></script><style type="text/css">#st-1 {
+  font-family: "Helvetica Neue", Verdana, Helvetica, Arial, sans-serif;;
+  direction: ltr;
+  display: block;
+  opacity: 1;
+  text-align: center;
+  z-index: 94034;
+}
+#st-1.st-animated {
+  -moz-transition: o 0.2s ease-in, p 0.2s ease-in, a 0.2s ease-in, c 0.2s ease-in, i 0.2s ease-in, t 0.2s ease-in, y 0.2s ease-in; -ms-transition: o 0.2s ease-in, p 0.2s ease-in, a 0.2s ease-in, c 0.2s ease-in, i 0.2s ease-in, t 0.2s ease-in, y 0.2s ease-in; -o-transition: o 0.2s ease-in, p 0.2s ease-in, a 0.2s ease-in, c 0.2s ease-in, i 0.2s ease-in, t 0.2s ease-in, y 0.2s ease-in; -webkit-transition: o 0.2s ease-in, p 0.2s ease-in, a 0.2s ease-in, c 0.2s ease-in, i 0.2s ease-in, t 0.2s ease-in, y 0.2s ease-in; transition: o 0.2s ease-in, p 0.2s ease-in, a 0.2s ease-in, c 0.2s ease-in, i 0.2s ease-in, t 0.2s ease-in, y 0.2s ease-in;
+}
+#st-1.st-hidden {
+  opacity: 0;
+}
+#st-1.st-hide {
+  display: none;
+}
+#st-1 .st-btn {
+  -moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+  -moz-transition: opacity 0.2s ease-in, top 0.2s ease-in; -ms-transition: opacity 0.2s ease-in, top 0.2s ease-in; -o-transition: opacity 0.2s ease-in, top 0.2s ease-in; -webkit-transition: opacity 0.2s ease-in, top 0.2s ease-in; transition: opacity 0.2s ease-in, top 0.2s ease-in;
+  -moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 12px;
+  height: 32px;
+  line-height: 32px;
+  margin-right: 8px;
+  padding: 0 10px;
+  position: relative;
+  text-align: center;
+  top: 0;
+  vertical-align: top;
+  white-space: nowrap;
+}
+#st-1 .st-btn:last-child {
+  margin-right: 0;
+}
+#st-1 .st-btn > svg {
+  height: 16px;
+  width: 16px;
+  position: relative;
+  top: 8px;
+  vertical-align: top;
+}
+#st-1 .st-btn > img {
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  position: relative;
+  top: 8px;
+  vertical-align: top;
+}
+#st-1 .st-btn > span {
+  -moz-transition: all 0.2s ease-in; -ms-transition: all 0.2s ease-in; -o-transition: all 0.2s ease-in; -webkit-transition: all 0.2s ease-in; transition: all 0.2s ease-in;
+  color: #fff;
+  display: inline-block;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  min-width: 60px;
+  opacity: 1;
+  padding: 0 6px;
+  position: relative;
+  vertical-align: top;
+}
+#st-1.st-has-labels .st-btn {
+  min-width: 120px;
+}
+#st-1.st-has-labels .st-btn.st-remove-label {
+  min-width: 50px;
+}
+#st-1.st-has-labels .st-btn.st-remove-label > span {
+  display: none;
+}
+#st-1.st-has-labels .st-btn.st-hide-label > span {
+  display: none;
+}
+#st-1 .st-total {
+  color: #555;
+  display: inline-block;
+  font-weight: 500;
+  line-height: 12px;
+  margin-right: 0;
+  max-width: 80px;
+  padding: 4px 8px;
+  text-align: center;
+}
+#st-1 .st-total.st-hidden {
+  display: none;
+}
+#st-1 .st-total > span {
+  font-size: 16px;
+  line-height: 17px;
+  display: block;
+  padding: 0;
+}
+#st-1 .st-total > span.st-shares {
+  font-size: 9px;
+  line-height: 9px;
+}
+#st-1.st-justified {
+  display: flex;
+  text-align: center;
+}
+#st-1.st-justified .st-btn {
+  -moz-flex: 1;
+-ms-flex: 1;
+-webkit-flex: 1;
+flex: 1;
+}#st-1 .st-btn:hover {
+  opacity: .8;
+  top: -4px;
+}#st-1 .st-btn[data-network='twitter'] {
+  background-color: #55acee
+}
+#st-1 .st-btn[data-network='twitter'] img {
+  filter: 
+}
+#st-1 .st-btn[data-network='twitter'] > span {
+  color: #fff
+}
+#st-1 .st-btn[data-network='reddit'] {
+  background-color: #ff4500
+}
+#st-1 .st-btn[data-network='reddit'] img {
+  filter: 
+}
+#st-1 .st-btn[data-network='reddit'] > span {
+  color: #fff
+}
+#st-1 .st-btn[data-network='facebook'] {
+  background-color: #4267B2
+}
+#st-1 .st-btn[data-network='facebook'] img {
+  filter: 
+}
+#st-1 .st-btn[data-network='facebook'] > span {
+  color: #fff
+}
+#st-1 .st-btn[data-network='linkedin'] {
+  background-color: #0077b5
+}
+#st-1 .st-btn[data-network='linkedin'] img {
+  filter: 
+}
+#st-1 .st-btn[data-network='linkedin'] > span {
+  color: #fff
+}#st-1 .st-btn[data-network='snapchat'] > span {
+  color: #333};
+}</style><script src="./Big-O Algorithm Complexity Cheat Sheet (Know Thy Complexities!) @ericdrowell_files/alfie_v4.63f1ab6d6b9d5807dc0c94ef3fe0b851.js.download" async="" charset="UTF-8"></script></head>
+  <body>
+
+     <select id="languageSelect">
+       <option value="en">English</option>
+       <option value = "te">Telugu</option>
+       <option value = "hi">Hindi</option>
+
+       <!-- Add more languages as needed -->
+     </select>
+     
+     <!-- Translation button -->
+     <button id="translateButton">Translate</button>
+     <script>const apiKey = 'AIzaSyCTFNz852QtAf5Y9rZYLpUH7KLYNb9dtn8';
+      const endpoint = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
+      
+      function translateText(sourceLanguage, targetLanguage, text, element) {
+        const payload = {
+          q: text,
+          source: sourceLanguage,
+          target: targetLanguage,
+          format: 'text',
+      
+        };
+      
+        fetch(endpoint, {
+          method: 'POST',
+          body: JSON.stringify(payload)
+        })
+        .then(response => response.json())
+        .then(data => {
+          const translatedText = data.data.translations[0].translatedText;
+          // Update the relevant HTML element with the translated text
+          element.innerText = translatedText;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+      }
+      
+      // Add a button that triggers translation
+      const translateButton = document.getElementById('translateButton');
+      translateButton.addEventListener('click', () => {
+        const sourceLanguage = 'en';
+        const targetLanguage = document.getElementById('languageSelect').value;
+        const textElements = document.querySelectorAll('.translate');
+        textElements.forEach(element => {
+          const text = element.innerText;
+          translateText(sourceLanguage, targetLanguage, text, element);
+        });
+      });
+      
+      // Add HTML elements that need to be translated
+      const textElements = document.querySelectorAll('.translate');
+      const tableElement = document.querySelector('table');
+      textElements.forEach(element => {
+        // Add a data-lang attribute to each element to specify the source language
+        element.setAttribute('data-lang', 'en');
+      });
+      tableElement.setAttribute('data-lang','en');
+
+      </script>
+    <div id="header"> 
+      <a id="logo" href="https://www.bigocheatsheet.com/" class = "translate" data-lang="en">Big-O Cheat Sheet</a>
+      <a id="download" href="https://www.bigocheatsheet.com/pdf/big-o-cheatsheet.pdf" download="big-o-cheatsheet.pdf" class = "translate" data-lang="en">Download PDF</a>
+    </div>
+
+    <div id="page">
+      
+    <div class="sharethis-inline-share-buttons st-center st-has-labels  st-inline-share-buttons st-animated" id="st-1"><div class="st-total ">
+  <span class="st-label">162k</span>
+  <span class="st-shares">
+    Shares
+  </span>
+</div><div class="st-btn st-first" data-network="twitter" style="display: inline-block;">
+  <img alt="twitter sharing button" src="./Big-O Algorithm Complexity Cheat Sheet (Know Thy Complexities!) @ericdrowell_files/twitter.svg">
+  <span class="st-label">Tweet</span>
+</div><div class="st-btn" data-network="reddit" style="display: inline-block;">
+  <img alt="reddit sharing button" src="./Big-O Algorithm Complexity Cheat Sheet (Know Thy Complexities!) @ericdrowell_files/reddit.svg">
+  <span class="st-label">Share</span>
+</div><div class="st-btn" data-network="facebook" style="display: inline-block;">
+  <img alt="facebook sharing button" src="./Big-O Algorithm Complexity Cheat Sheet (Know Thy Complexities!) @ericdrowell_files/facebook.svg">
+  <span class="st-label">Share</span>
+</div><div class="st-btn st-last" data-network="linkedin" style="display: inline-block;">
+  <img alt="linkedin sharing button" src="./Big-O Algorithm Complexity Cheat Sheet (Know Thy Complexities!) @ericdrowell_files/linkedin.svg">
+  <span class="st-label">Share</span>
+</div></div>
+
+      <h1 class = "translate" data-lang="en">Know the Complexities</h1>
+      <p class = "translate" data-lang="en">
+        Hi there!&nbsp; This webpage covers the space and time Big-O complexities of common algorithms used in Computer Science.&nbsp; When preparing for technical interviews in the past, I found myself spending hours crawling the internet putting together the best, average, and worst case complexities for search and sorting algorithms so that I wouldn't be stumped when asked about them.&nbsp; Over the last few years, I've interviewed at several Silicon Valley startups, and also some bigger companies, like Google, Facebook, Yahoo, LinkedIn, and Uber, and each time that I prepared for an interview, I thought to myself "Why hasn't someone created a nice Big-O cheat sheet?".&nbsp; So, to save all of you fine folks a ton of time, I went ahead and created one.&nbsp; Enjoy! - <a href="https://twitter.com/ericdrowell">Eric</a>
+      </p>
+      <p class="promo">
+
+        <a href="https://www.second.dev/blog/how-to-build-a-b2b-saas-website" target="_blank" class = "translate" data-lang="en">How to Build a B2B SaaS Website</a>
+
+
+      </p>
+
+      
+        <h2  class = "translate" data-lang="en" id="chartTitle">Big-O Complexity Chart</h2>  
+        <!-- for webpage scrapers
+        <img id="chart" src="img/big-o-complexity-chart.png" />
+        -->
+
+        <div>
+          <table id="legend" class="table">
+            <tbody  >
+              <tr >
+                <td><code class="red" >Horrible</code></td>
+                <td ><code class="orange">Bad</code></td>
+                <td ><code class="yellow">Fair</code></td>
+                <td><code class="yellow-green">Good</code></td>
+                <td><code class="green">Excellent</code></td>
+              </tr>
+            </tbody>
+          </table> 
+        </div>
+
+        <div>
+          <svg id="chart" width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+            <!-- horrible region -->
+            <path d="M50 450 L 50 0 L 800 0 L 800 450 Z" fill="#ff8989"></path>
+            <!-- bad region -->
+            <path d="M50 450 L 800 0 L 800 450 Z" fill="#FFC543"></path>
+            <!-- fair region -->
+            <path d="M50 450 L 800 450 L 800 330 Z" fill="yellow"></path>
+            <!-- good region -->
+            <path d="M50 450 L 800 450 L 800 410 Z" fill="#C8EA00"></path>
+            <!-- excellent region -->
+            <path d="M50 450 L 800 450 L 800 440 Z" fill="#53d000"></path>
+
+            <!-- axes -->
+            <path d="M50 0 L 50 450 L 800 450" fill="transparent" stroke="black" stroke-width="2"></path>
+
+            <path d="M50 448 L 800 448" fill="transparent" stroke="black" stroke-width="2"></path>
+            <text x="700" y="438" fill="black">O(log n), O(1)</text>
+
+            <path d="M50 450 L 800 400" fill="transparent" stroke="black" stroke-width="2"></path>
+            <text x="760" y="390" fill="black">O(n)</text>
+
+            <path d="M50 450 Q 400 350, 800 150" fill="transparent" stroke="black" stroke-width="2"></path>
+            <text x="630" y="190" fill="black">O(n log n)</text>
+
+            <path d="M50 450 Q 180 380, 250 0" fill="transparent" stroke="black" stroke-width="2"></path>
+            <text x="260" y="30" fill="black">O(n^2)</text>
+
+            <path d="M50 450 C 100 430, 120 350, 120 0" fill="transparent" stroke="black" stroke-width="2"></path>
+            <text x="125" y="20" fill="black">O(2^n)</text>
+
+            <path d="M50 450 C 80 450, 80 350, 80 0" fill="transparent" stroke="black" stroke-width="2"></path>
+            <text x="80" y="20" fill="black">O(n!)</text>
+
+            <text x="0" y="0" transform="translate(30 230) rotate(-90)" style="dominant-baseline: middle; text-anchor: middle; font-size:20px; color: #555; font-size:20px; color: #555; font-style: italic;" fill="black">Operations</text>
+            <text x="0" y="0" transform="translate(420 470)" style="dominant-baseline: middle; text-anchor: middle; font-size:20px; color: #555; font-style: italic;" fill="black">Elements</text>
+          </svg>
+        </div>
+
+      <div id="tablesWrapper">
+        <h2 id="data-structures" class = "translate" data-lang="en">Common Data Structure Operations</h2>
+<table class="table table-bordered table-striped">
+
+    <tbody><tr>
+      <th class = "translate" data-lang="en">Data Structure</th>
+      <th  class = "translate" data-lang="en" colspan="8">Time Complexity</th>
+      <th class = "translate" data-lang="en">Space Complexity</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th colspan="4" class = "translate" data-lang="en">Average</th>
+      <th colspan="4" class = "translate" data-lang="en">Worst</th>
+      <th class = "translate" data-lang="en">Worst</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th class = "translate" data-lang="en">Access</th>
+      <th class = "translate" data-lang="en">Search</th>
+      <th class = "translate" data-lang="en">Insertion</th>
+      <th class = "translate" data-lang="en">Deletion</th>
+      <th class = "translate" data-lang="en">Access</th>
+      <th class = "translate" data-lang="en">Search</th>
+      <th class = "translate" data-lang="en">Insertion</th>
+      <th class = "translate" data-lang="en">Deletion</th>
+      <th></th>
+    </tr>
+
+    <tr>
+      <td><a class = "translate" data-lang="en" href="http://en.wikipedia.org/wiki/Array_data_structure">Array</a></td>
+      <td><code class="green">Θ(1)</code></td>
+      <td><code class="yellow">Θ(n)</code></td>
+      <td><code class="yellow">Θ(n)</code></td>
+      <td><code class="yellow">Θ(n)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a class = "translate" data-lang="en" href="http://en.wikipedia.org/wiki/Stack_(abstract_data_type)">Stack</a></td>
+      <td><code class="yellow">Θ(n)</code></td>
+      <td><code class="yellow">Θ(n)</code></td>
+      <td><code class="green">Θ(1)</code></td>
+      <td><code class="green">Θ(1)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td ><a class = "translate" data-lang="en" href="http://en.wikipedia.org/wiki/Queue_(abstract_data_type)">Queue</a></td>
+      <td><code class="yellow">Θ(n)</code></td>
+      <td><code class="yellow">Θ(n)</code></td>
+      <td><code class="green">Θ(1)</code></td>
+      <td><code class="green">Θ(1)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a class = "translate" data-lang="en" href="http://en.wikipedia.org/wiki/Singly_linked_list#Singly_linked_lists">Singly-Linked List</a></td>
+      <td><code class="yellow">Θ(n)</code></td>
+      <td><code class="yellow">Θ(n)</code></td>
+      <td><code class="green">Θ(1)</code></td>
+      <td><code class="green">Θ(1)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a class = "translate" data-lang="en" href="http://en.wikipedia.org/wiki/Doubly_linked_list">Doubly-Linked List</a></td>
+      <td><code class="yellow">Θ(n)</code></td>
+      <td><code class="yellow">Θ(n)</code></td>
+      <td><code class="green">Θ(1)</code></td>
+      <td><code class="green">Θ(1)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a class = "translate" data-lang="en" href="http://en.wikipedia.org/wiki/Skip_list">Skip List</a></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="orange">O(n log(n))</code></td>
+    </tr>
+    <tr>
+      <td><a class = "translate" data-lang="en" href="http://en.wikipedia.org/wiki/Hash_table">Hash Table</a></td>
+      <td><code class="gray">N/A</code></td>
+      <td><code class="green">Θ(1)</code></td>
+      <td><code class="green">Θ(1)</code></td>
+      <td><code class="green">Θ(1)</code></td>
+      <td><code class="gray">N/A</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a class = "translate" data-lang="en" href="http://en.wikipedia.org/wiki/Binary_search_tree">Binary Search Tree</a></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a class = "translate" data-lang="en" href="https://en.wikipedia.org/wiki/Cartesian_tree">Cartesian Tree</a></td>
+      <td><code class="gray">N/A</code></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="gray">N/A</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a class = "translate" data-lang="en" href="http://en.wikipedia.org/wiki/B_tree">B-Tree</a></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td ><a class = "translate" data-lang="en" href="http://en.wikipedia.org/wiki/Red-black_tree">Red-Black Tree</a></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a class = "translate" data-lang="en" href="https://en.wikipedia.org/wiki/Splay_tree">Splay Tree</a></td>
+      <td><code class="gray">N/A</code></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="gray">N/A</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td ><a class = "translate" data-lang="en" href="http://en.wikipedia.org/wiki/AVL_tree">AVL Tree</a></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td ><a  class = "translate" data-lang="en"href="http://en.wikipedia.org/wiki/K-d_tree">KD Tree</a></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow-green">Θ(log(n))</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+
+</tbody></table>
+
+<h2 id="sorting" class = "translate" data-lang="en">Array Sorting Algorithms</h2>
+<table class="table table-bordered table-striped">
+    <tbody><tr>
+      <th class = "translate" data-lang="en">Algorithm</th>
+      <th colspan="3" class = "translate" data-lang="en">Time Complexity</th>
+      <th class = "translate" data-lang="en">Space Complexity</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th class = "translate" data-lang="en">Best</th>
+      <th class = "translate" data-lang="en">Average</th>
+      <th class = "translate" data-lang="en">Worst</th>
+      <th class = "translate" data-lang="en">Worst</th>
+    </tr>
+
+    <tr>
+      <td ><a class = "translate" data-lang="en" href="http://en.wikipedia.org/wiki/Quicksort">Quicksort</a></td>
+      <td><code class="orange">Ω(n log(n))</code></td>
+      <td><code class="orange">Θ(n log(n))</code></td>
+      <td><code class="red">O(n^2)</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+    </tr>
+    <tr>
+      <td ><a class = "translate" data-lang="en" href="http://en.wikipedia.org/wiki/Merge_sort">Mergesort</a></td>
+      <td><code class="orange">Ω(n log(n))</code></td>
+      <td><code class="orange">Θ(n log(n))</code></td>
+      <td><code class="orange">O(n log(n))</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td ><a class = "translate" data-lang="en" href="http://en.wikipedia.org/wiki/Timsort">Timsort</a></td>
+      <td><code class="yellow">Ω(n)</code></td>
+      <td><code class="orange">Θ(n log(n))</code></td>
+      <td><code class="orange">O(n log(n))</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a class = "translate" data-lang="en" href="http://en.wikipedia.org/wiki/Heapsort">Heapsort</a></td>
+      <td><code class="orange">Ω(n log(n))</code></td>
+      <td><code class="orange">Θ(n log(n))</code></td>
+      <td><code class="orange">O(n log(n))</code></td>
+      <td><code class="green">O(1)</code></td>
+    </tr>
+    <tr>
+      <td ><a class = "translate" data-lang="en" href="http://en.wikipedia.org/wiki/Bubble_sort">Bubble Sort</a></td>
+      <td><code class="yellow">Ω(n)</code></td>
+      <td><code class="red">Θ(n^2)</code></td>
+      <td><code class="red">O(n^2)</code></td>
+      <td><code class="green">O(1)</code></td>
+    </tr>
+    <tr>
+      <td><a class = "translate" data-lang="en" href="http://en.wikipedia.org/wiki/Insertion_sort">Insertion Sort</a></td>
+      <td><code class="yellow">Ω(n)</code></td>
+      <td><code class="red">Θ(n^2)</code></td>
+      <td><code class="red">O(n^2)</code></td>
+      <td><code class="green">O(1)</code></td>
+    </tr>
+    <tr>
+      <td><a class = "translate" data-lang="en" href="http://en.wikipedia.org/wiki/Selection_sort">Selection Sort</a></td>
+      <td><code class="red">Ω(n^2)</code></td>
+      <td><code class="red">Θ(n^2)</code></td>
+      <td><code class="red">O(n^2)</code></td>
+      <td><code class="green">O(1)</code></td>
+    </tr>
+    <tr>
+      <td><a class = "translate" data-lang="en" href="https://en.wikipedia.org/wiki/Tree_sort">Tree Sort</a></td>
+      <td><code class="orange">Ω(n log(n))</code></td>
+      <td><code class="orange">Θ(n log(n))</code></td>
+      <td><code class="red">O(n^2)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a class = "translate" data-lang="en" href="http://en.wikipedia.org/wiki/Shellsort">Shell Sort</a></td>
+      <td><code class="orange">Ω(n log(n))</code></td>
+      <td><code class="red">Θ(n(log(n))^2)</code></td>
+      <td><code class="red">O(n(log(n))^2)</code></td>
+      <td><code class="green">O(1)</code></td>
+    </tr>
+    <tr>
+      <td ><a class = "translate" data-lang="en" rel="tooltip" title="Only for integers. k is a number of buckets" href="http://en.wikipedia.org/wiki/Bucket_sort">Bucket Sort</a></td>
+      <td><code class="green">Ω(n+k)</code></td>
+      <td><code class="green">Θ(n+k)</code></td>
+      <td><code class="red">O(n^2)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a  class = "translate" data-lang="en"rel="tooltip" title="Constant number of digits &#39;k&#39;" href="http://en.wikipedia.org/wiki/Radix_sort">Radix Sort</a></td>
+      <td><code class="green">Ω(nk)</code></td>
+      <td><code class="green">Θ(nk)</code></td>
+      <td><code class="green">O(nk)</code></td>
+      <td><code class="yellow">O(n+k)</code></td>
+    </tr>
+    <tr>
+      <td><a rel="tooltip" title="Difference between maximum and minimum number &#39;k&#39;" href="https://en.wikipedia.org/wiki/Counting_sort" class = "translate" data-lang="en">Counting Sort</a></td>
+      <td><code class="green">Ω(n+k)</code></td>
+      <td><code class="green">Θ(n+k)</code></td>
+      <td><code class="green">O(n+k)</code></td>
+      <td><code class="yellow">O(k)</code></td>
+    </tr>
+    <tr>
+      <td><a href="https://en.wikipedia.org/wiki/Cubesort"  class = "translate" data-lang="en">Cubesort</a></td>
+      <td><code class="yellow">Ω(n)</code></td>
+      <td><code class="orange">Θ(n log(n))</code></td>
+      <td><code class="orange">O(n log(n))</code></td>
+      <td><code class="yellow">O(n)</code></td>
+   </tr>
+
+</tbody></table>
+      </div>
+      <h2 class = "translate" data-lang="en">Get the Official Big-O Cheat Sheet Poster</h2>
+      <a id="poster" href="http://www.redbubble.com/people/immortalloom/works/22929408-official-big-o-cheat-sheet-poster?p=poster&amp;finish=semi_gloss&amp;size=large" target="_blank" title="Big-O Cheat Sheet Poster"><img src="./Big-O Algorithm Complexity Cheat Sheet (Know Thy Complexities!) @ericdrowell_files/big-o-cheat-sheet-poster.png" width="600"></a>
+
+      <h2 class = "translate" data-lang="en">Contributors</h2>
+      <ol id="contributers">
+        <li><a href="https://github.com/ericdrowell" class = "translate" data-lang="en">Eric Rowell</a></li>
+        <li><a href="https://github.com/qpleple" class = "translate" data-lang="en">Quentin Pleple</a></li>
+        <li><a href="https://github.com/vault" class = "translate" data-lang="en">Michael Abed</a></li>
+        <li><a href="https://github.com/ndizazzo" class = "translate" data-lang="en">Nick Dizazzo</a></li>
+        <li><a href="https://github.com/agfor" class = "translate" data-lang="en">Adam Forsyth</a></li> 
+        <li><a href="https://github.com/felixzhuologist" class = "translate" data-lang="en">Felix Zhu</a></li> 
+        <li><a href="https://github.com/jay754" class = "translate" data-lang="en">Jay Engineer</a></li>
+        <li><a href="https://github.com/jdavis" class = "translate" data-lang="en">Josh Davis</a></li>
+        <li><a href="https://github.com/nodirt" class = "translate" data-lang="en">Nodir Turakulov</a></li>
+        <li><a href="https://github.com/jhamon" class = "translate" data-lang="en">Jennifer Hamon</a></li>
+        <li><a href="https://github.com/d3dave" class = "translate" data-lang="en">David Dorfman</a></li> 
+        <li><a href="https://github.com/BartMassey" class = "translate" data-lang="en">Bart Massey</a></li>
+        <li><a href="https://github.com/raypereda" class = "translate" data-lang="en">Ray Pereda</a></li>
+        <li><a href="https://github.com/phamtrisi" class = "translate" data-lang="en">Si Pham</a></li>
+        <li><a href="https://github.com/dodgymike" class = "translate" data-lang="en">Mike Davis</a></li>
+        <li><a href="https://github.com/mcverry" class = "translate" data-lang="en">mc verry</a></li>
+        <li><a href="https://github.com/mhoffman" class = "translate" data-lang="en">Max Hoffmann</a></li> 
+        <li><a href="https://github.com/BahadorSaket" class = "translate" data-lang="en">Bahador Saket</a></li> 
+        <li><a href="https://github.com/allolex" class = "translate" data-lang="en">Damon Davison</a></li>
+        <li><a href="https://github.com/alvinwan" class = "translate" data-lang="en">Alvin Wan</a></li> 
+        <li><a href="https://github.com/alanbriolat" class = "translate" data-lang="en">Alan Briolat</a></li> 
+        <li><a href="https://github.com/drewhannay" class = "translate" data-lang="en">Drew Hannay</a></li> 
+        <li><a href="https://github.com/andyras" class = "translate" data-lang="en">Andrew Rasmussen</a></li> 
+        <li><a href="https://github.com/DennisTT" class = "translate" data-lang="en">Dennis Tsang</a></li> 
+        <li><a href="https://github.com/vmagro" class = "translate" data-lang="en">Vinnie Magro</a></li>
+        <li><a href="https://github.com/adam-arold" class = "translate" data-lang="en">Adam Arold</a></li>
+        <li><a href="https://github.com/j4n0" class = "translate" data-lang="en">Alejandro Ramirez</a></li> 
+        <li><a href="https://github.com/WanderingStar" class = "translate" data-lang="en">Aneel Nazareth</a></li>
+        <li><a href="https://github.com/rahulc93" class = "translate" data-lang="en">Rahul Chowdhury</a></li>
+        <li><a href="https://github.com/jonathanmcelroy" class = "translate" data-lang="en">Jonathan McElroy</a></li>
+        <li><a href="https://github.com/steven41292" class = "translate" data-lang="en">steven41292</a></li>
+        <li><a href="https://github.com/bamos" class = "translate" data-lang="en">Brandon Amos</a></li>
+        <li><a href="https://github.com/jfriedly" class = "translate" data-lang="en">Joel Friedly</a></li> 
+        <li><a href="https://github.com/caspervg" class = "translate" data-lang="en">Casper Van Gheluwe</a></li>
+        <li><a href="https://github.com/elefevre" class = "translate" data-lang="en">Eric Lefevre-Ardant</a></li>
+        <li><a href="https://github.com/cristaloleg" class = "translate" data-lang="en">Oleg</a></li> 
+        <li><a href="https://github.com/renfredxh" class = "translate" data-lang="en">Renfred Harper</a></li>
+        <li><a href="https://github.com/piperchester" class = "translate" data-lang="en">Piper Chester</a></li> 
+        <li><a href="https://github.com/mamigot" class = "translate" data-lang="en">Miguel Amigot</a></li> 
+        <li><a href="https://github.com/paxocap" class = "translate" data-lang="en">Apurva K</a></li> 
+        <li><a href="https://github.com/mdaronco" class = "translate" data-lang="en">Matthew Daronco</a></li> 
+        <li><a href="https://github.com/yunchenglin" class = "translate" data-lang="en">Yun-Cheng Lin</a></li>
+        <li><a href="https://github.com/TylerNakamura" class = "translate" data-lang="en">Clay Tyler</a></li> 
+        <li><a href="https://github.com/ocozalp" class = "translate" data-lang="en">Orhan Can Ozalp</a></li> 
+        <li><a href="https://github.com/aymanim" class = "translate" data-lang="en">Ayman Singh</a></li> 
+        <li><a href="https://github.com/damorton" class = "translate" data-lang="en">David Morton</a></li> 
+        <li><a href="https://github.com/aureooms" class = "translate" data-lang="en">Aurelien Ooms</a></li> 
+        <li><a href="https://github.com/Eckankar" class = "translate" data-lang="en">Sebastian Paaske Torholm</a></li> 
+        <li><a href="https://github.com/koek67" class = "translate" data-lang="en">Koushik Krishnan</a></li> 
+        <li><a href="https://github.com/makosblade" class = "translate" data-lang="en">Drew Bailey</a></li> 
+        <li><a href="https://github.com/sharpobject" class = "translate" data-lang="en">Robert Burke</a></li> 
+      </ol> 
+
+      <h2 class = "translate" data-lang="en">Make this Page Better</h2>
+      <a href="https://github.com/ericdrowell/BigOCheatSheet/blob/master/Tables.html" class = "translate" data-lang="en">Edit these tables!</a>
+
+      
+
+    </div>
+</body>
+</html>
+
